@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.windows": {
+      "PATH": "C:\\Program Files\\Python312\\;C:\\Program Files\\Python312\\Scripts\\;${env:PATH}"
+    }
+  }
+  
