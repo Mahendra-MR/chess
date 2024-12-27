@@ -11,7 +11,7 @@ CORS(app)  # Enable CORS for the app
 game = chess.Board()
 
 # Specify the correct path to the Stockfish binary
-stockfish_path = r"C:\Users\Mahendra MR\Documents\stockfish\stockfish-windows-x86-64-avx2.exe"
+stockfish_path = r"C:\Users\Mahendra MR\Documents\workspace\chess\stockfish\stockfish-windows-x86-64-avx2.exe"
 
 
 # Ensure Stockfish path exists
