@@ -159,5 +159,28 @@ button:hover {
 
 .game-status h3 {
   font-size: 2em;
-  color: #f00;
+  color: #f00; 
 }
+.overlay {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(232, 229, 229, 0.568); /* Semi-transparent dark background */
+  backdrop-filter: blur(5px); /* Apply background blur */
+  z-index: 5; /* Ensure the blur layer is below the text */
+}
+

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,17 +13,17 @@
     "chess.js": "^0.10.3",
     "react": "^19.0.0",
     "react-chessboard": "^4.7.2",
-    "react-confetti": "^6.1.0",
+    "react-confetti": "^6.2.1",
     "react-dom": "^19.0.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4",
     "webpack-dev-server": "^5.2.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "scripts":{
+  "start": "craco start",
+  "build": "craco build",
+  "test": "craco test",
+  "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -41,5 +42,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "webpack": "^5.97.1"
   }
 }

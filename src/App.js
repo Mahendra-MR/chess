@@ -20,7 +20,7 @@ function App() {
       setGameStatus({ status, winner });
       setIsGameOver(true);
       if (["Checkmate!", "Stalemate!", "Draw!"].includes(status)) {
-        setShowConfetti(true);
+        setShowConfetti(true); // Trigger confetti for checkmate or draw
       }
     }
   };
@@ -52,7 +52,10 @@ function App() {
       if (move) {
         setGame(new Chess(game.fen()));
         checkGameOver();
-        setTimeout(makeComputerMove, 500);
+        if (playerColor === "black") {
+          // If player is black, make the computer move after their turn
+          setTimeout(makeComputerMove, 500);
+        }
       } else {
         console.log("Invalid move");
       }
@@ -93,6 +96,13 @@ function App() {
     setBoardOrientation(color === "white" ? "white" : "black");
   };
 
+  // Trigger computer move when player selects black
+  useEffect(() => {
+    if (playerColor === "black") {
+      makeComputerMove(); // Make the computer's move immediately after the player selects black
+    }
+  }, [playerColor]); // Run when playerColor changes to "black"
+
   return (
     <div className="App">
       {showConfetti && <Confetti />}
@@ -121,6 +131,23 @@ function App() {
               <button onClick={() => handlePromotion("n")}>Knight</button>
             </div>
           )}
+
+          {/* Show game over status */}
+          {isGameOver && (
+            <div className="overlay">
+              {/* Show the status only if the game is really over */}
+              {(gameStatus.status === "Checkmate!" || gameStatus.status === "Stalemate!" || gameStatus.status === "Draw!") && (
+                <>
+                  <h2>{gameStatus.status}</h2>
+                  <h3>Winner: {gameStatus.winner}</h3>
+                  <button onClick={resetGame}>Play Again</button>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Add blur effect when game is over */}
+          {isGameOver && <div className="blur-background"></div>}
         </>
       )}
     </div>

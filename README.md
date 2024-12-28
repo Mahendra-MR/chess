@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# React Chess Game with Stockfish Integration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a chess game built using React on the frontend and Python for the backend. The frontend allows users to play chess against the computer, with the game logic powered by Chess.js. The backend leverages the Stockfish chess engine to provide stronger AI moves.
 
-## Available Scripts
+## Features
+- **React Frontend**: Provides the chessboard UI and player interactions.
+- **Chess.js**: Manages the game state, move validation, and pawn promotion.
+- **Stockfish Integration**: Python backend with Stockfish engine to make computer moves.
+- **Confetti Animation**: Display confetti when the game ends in checkmate, stalemate, or draw.
+- **AI Opponent**: Basic AI using Stockfish to play as the opponent.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+### 1. Clone the repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/Mahendra-MR/react-chess-game.git
+cd react-chess-game
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Install Frontend Dependencies
 
-### `npm test`
+Navigate to the frontend directory (/client or wherever your React app is located) and install the necessary dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd client
+npm install
+```
 
-### `npm run build`
+ # Install Backend Dependencies
+If you're running the Python backend (Stockfish integration), make sure you have the backend server set up. Here's how to install dependencies for the Python part of the project:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Navigate to the backend directory (if you have one, otherwise skip this part):
+```bash 
+cd backend
+```
+## Set up a Python virtual environment (optional but recommended):
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows use venv\Scripts\activate
+```
+## Install required packages: Install the necessary Python packages using pip:
+```bash
+pip install -r requirements.txt
+```
+## Download and Set up Stockfish:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Stockfish is a powerful chess engine. You will need to download the Stockfish executable and place it in the backend folder or specify its location.
+You can download Stockfish from [here](https://stockfishchess.org/download/).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Run Python Backend Server
+To start the backend server that interacts with Stockfish, run the following command:
 
-### `npm run eject`
+```bash
+python app.py
+```
+This will start a Python server on http://localhost:5000, which handles requests related to the game and uses the Stockfish engine for move generation.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Start the React Frontend
+Once the backend server is running, go back to the React frontend directory and start the React development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd client
+npm start
+```
+This will launch the frontend React application in your browser, typically at http://localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Backend Details
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## app.py
+**Flask Server:** This file is a simple Flask app that exposes an API to interact with the Stockfish chess engine.
+**Stockfish:** The backend uses the Stockfish engine to make AI moves. Stockfish is powerful and can provide challenging moves for the player.
+The backend listens for requests from the React frontend, processes the move, and sends back the AI's response.
 
-## Learn More
+**Example API flow:**
+Frontend sends the current board state and player move to the backend.
+Backend processes the move, asks Stockfish for the best move, and returns it to the frontend.
+The frontend updates the board with the computer's move.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Packages Installed
+## Frontend (React):
+**React:** A JavaScript library for building user interfaces.
+**Chess.js:** A library for managing the game of chess, including move generation and validation.
+**Confetti:** A library used to show confetti animations when the game ends in checkmate, stalemate, or draw.
+**React-confetti:** React wrapper for the confetti package used to display confetti animation.
 
-### Code Splitting
+## Backend (Python):
+**Flask:** A lightweight Python web framework for building REST APIs.
+**Stockfish:** A powerful open-source chess engine used to generate computer moves.
+**pyChess:** Optional Python wrapper around Stockfish (if used for advanced interactions).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To view and modify the installed packages, check the package.json (React) and requirements.txt (Python) files.
