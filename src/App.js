@@ -18,9 +18,11 @@ function App() {
     const { status, winner } = getGameStatus(game);
     if (status) {
       setGameStatus({ status, winner });
-      setIsGameOver(true);
-      if (["Checkmate!", "Stalemate!", "Draw!"].includes(status)) {
-        setShowConfetti(true); // Trigger confetti for checkmate or draw
+      if (status === "Checkmate!" || status === "Stalemate!" || status === "Draw!") {
+        setIsGameOver(true); // Stop the game if it's checkmate, stalemate, or draw
+        if (["Checkmate!", "Stalemate!", "Draw!"].includes(status)) {
+          setShowConfetti(true); // Trigger confetti for checkmate or draw
+        }
       }
     }
   };
@@ -96,12 +98,17 @@ function App() {
     setBoardOrientation(color === "white" ? "white" : "black");
   };
 
-  // Trigger computer move when player selects black
+  // Trigger computer move when player selects either color
   useEffect(() => {
-    if (playerColor === "black") {
-      makeComputerMove(); // Make the computer's move immediately after the player selects black
+    if (playerColor) {
+      // If player selects white, computer plays black, and vice versa
+      setTimeout(() => {
+        if (game.turn() !== playerColor[0]) {
+          makeComputerMove(); // Make the computer's move immediately after the player selects their color
+        }
+      }, 500); // Delay to simulate a smoother game flow
     }
-  }, [playerColor]); // Run when playerColor changes to "black"
+  }, [playerColor, game.turn()]); // Run when playerColor changes or game.turn() changes
 
   return (
     <div className="App">
@@ -146,8 +153,10 @@ function App() {
             </div>
           )}
 
-          {/* Add blur effect when game is over */}
-          {isGameOver && <div className="blur-background"></div>}
+          {/* Add blur effect when game is over (checkmate, stalemate, draw) */}
+          {isGameOver && (
+            <div className="blur-background"></div>
+          )}
         </>
       )}
     </div>

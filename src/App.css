@@ -179,8 +179,7 @@ button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(232, 229, 229, 0.568); /* Semi-transparent dark background */
+  background: rgba(232, 229, 229, 0); /* Semi-transparent dark background */
   backdrop-filter: blur(5px); /* Apply background blur */
   z-index: 5; /* Ensure the blur layer is below the text */
 }
-
