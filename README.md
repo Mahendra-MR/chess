@@ -14,8 +14,8 @@ This project is a chess game built using React on the frontend and Python for th
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Mahendra-MR/react-chess-game.git
-cd react-chess-game
+git clone https://github.com/Mahendra-MR/chess.git
+cd chess
 ```
 
 # Install Frontend Dependencies
